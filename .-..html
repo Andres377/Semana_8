@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		c=10;
+		play=true;
+		pu=0;
+	</script>
+	<style type="text/css">
+		.menu{
+			position: absolute;
+			width: 500px;
+			top: 300px;
+			height: 80px;
+			background-color: purple;
+			font-size: 68px;
+			text-align: center;
+			font-family: Aldo the Apache;
+		}
+		body{
+        background-image: url(font.jpg);  
+        background-size:100% 100%;
+        background-attachment: fixed;
+        }
+        .gamezone{
+        	position: absolute;
+        	background-color: white;
+        	top: 60px;
+        	left: 530px;
+        	height: 520px;
+        	width: 790px;
+        	opacity: 0.8;
+        }
+
+		.cua{
+			position: absolute;
+			background-color: red;
+			transition: 0.5s;
+			border-radius: 100px;
+		}
+		.cron{
+			position: absolute;
+			top: 200px;
+			width: 500px;
+			height: 80px;
+			background-color: pink;
+			font-size: 58px;
+			text-align: center;
+			font-family: Aldo the Apache;
+		}
+		.punt{
+			position: absolute;
+			width: 500px;
+			top: 300px;
+			height: 80px;
+			background-color: pink;
+			font-size: 58px;
+			text-align: center;
+			font-family: Aldo the Apache;
+		}
+	</style>
+	<title>random</title>
+</head>
+<body onload="ini()">
+	<div class="gamezone"></div>
+	<div class="cua" id="cuad" onclick="ramd()"></div>
+	<div class="cron" id="cuado"></div>
+	<div class="punt" id="cp"></div>
+	<div id="menu"></div>
+	
+<script>
+	var d=document.getElementById('cuad');
+	function ini(){
+		ran();
+		crono();
+		tama();
+		tryhard();
+		pu=0;
+	}
+	function ran()
+	{
+	var rx = Math.floor(Math.random() * ((1100+1) - 535) + 535);
+	var ry = Math.floor(Math.random() * ((370+1) - 70) + 70);
+	var x = rx.toString();
+	var y = ry.toString();
+	 d.style.left=x+"px";
+     d.style.top=y+"px";
+
+}
+function ramd(){
+	if (play==true) {
+		ran();
+		tama();
+		psho();
+
+
+	}	
+}
+function rami(){
+	if (play==true) {
+		ran();
+		psho();
+	}	
+}
+function crono(){
+	cronometro=setInterval(dismi,1000)
+}
+function dismi(){
+	c=c-1;
+	document.getElementById('cuado').innerHTML=(c);
+	if (c==0) {
+		clearInterval(cronometro);
+		var t=document.getElementById('cuado').innerHTML=("Game over")
+		play=false;
+		var n4=document.getElementById('exit');
+		n4.className="menu"
+		var t=document.getElementById('exit').innerHTML=("Menu")
+	}	
+}
+function tama(){
+	vh=0;
+	var rh = Math.floor(Math.random() * ((1+1) - 5) + 5);
+	vh=rh*30;
+	 d.style.height=vh+"px";
+     d.style.width=vh+"px";
+     if (rh==2) {
+		pu=pu+3;
+	}if (rh==3) {
+		pu=pu+2;
+	}if (rh==4) {
+		pu=pu+1;
+	}
+     console.log(pu);
+
+}
+function tryhard(){
+dificultad=setInterval(rami,150);
+}
+function psho(){
+	document.getElementById('cp').innerHTML=(pu);
+}
+</script>
+</body>
+</html>

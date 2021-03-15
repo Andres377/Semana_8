@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		c=0;
+		play=false;
+		pu=0;
+	</script>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<title>random</title>
+</head>
+<body onload="ini()">
+	<div class="gamezone"></div>
+	<div class="cua" id="cuad" onclick="ramd()"></div>
+	<div class="cron" id="cuado"></div>
+	<div class="punt" id="cp"></div>
+	<div id="exit"></div>
+	
+<script>
+	var d=document.getElementById('cuad');
+	function ini(){
+		ran();
+		tama();
+		conta();
+		pu=0;
+	}
+	function ran()
+	{
+	var rx = Math.floor(Math.random() * ((1100+1) - 535) + 535);
+	var ry = Math.floor(Math.random() * ((370+1) - 70) + 70);
+	var x = rx.toString();
+	var y = ry.toString();
+	 d.style.left=x+"px";
+     d.style.top=y+"px";
+
+}
+function ramd(){
+	if (play==true) {
+		ran();
+		tama();
+		psho();
+
+
+	}	
+}
+function rami(){
+	if (play==true) {
+		ran();
+		psho();
+
+
+	}	
+}
+function conta(){
+	crono=setInterval(dismi,1000)
+}
+function dismi(){
+	c=c+1;
+	if (c<4) {
+		var t=document.getElementById('cuado').innerHTML=("Este es el juego de tecnologia")
+	}
+		
+	if (c==4) {
+		var t=document.getElementById('cuado').innerHTML=("Trata de pegarle al circulo rojo")
+		play=true
+
+	}
+	if (pu>20) {
+		var t=document.getElementById('cuado').innerHTML=("Facil,¿No?")
+		setTimeout(compli,1500)
+		clearInterval(crono)
+		play=false
+		c=0
+	}
+}
+function tama(){
+	vh=0;
+	var rh = Math.floor(Math.random() * ((1+1) - 5) + 5);
+	vh=rh*30;
+	 d.style.height=vh+"px";
+     d.style.width=vh+"px";
+     if (rh==2) {
+		pu=pu+3;
+	}if (rh==3) {
+		pu=pu+2;
+	}if (rh==4) {
+		pu=pu+1;
+	}
+
+}
+function psho(){
+	document.getElementById('cp').innerHTML=(pu);
+}
+function compli(){
+	var t=document.getElementById('cuado').innerHTML=("Ahora sera mas dificil")
+	pu=0
+	movi();
+
+}
+function movi(){
+	play=true
+	dificultad=setInterval(rami,800);
+}
+function rami(){
+	if (play==true) {
+		ran();
+		psho();
+	}if (pu>20) {
+		var t=document.getElementById('cuado').innerHTML=("Bien hecho vuelva al menu y selcciona una dificultad")
+		play=false
+		var n4=document.getElementById('exit');
+		n4.className="menu"
+		var t=document.getElementById('exit').innerHTML=("Menu")
+	}	
+}
+</script>
+
+</body>
+</html>
